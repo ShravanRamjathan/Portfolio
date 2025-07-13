@@ -4,6 +4,7 @@
   --primary: #8e44ff;
   --secondary: #c7a5ff;
   --border: #2a2a2a;
+  --section: #201d20;
   --gradient: linear-gradient(135deg, #8e44ff 0%, #4a00e0 100%);
 }
 .inter-main {
@@ -14,31 +15,79 @@
 }
 h1 {
   font-weight: bolder;
+  color: var(--foreground);
   font-size: clamp(1rem, 4vw, 3.5rem);
 }
 body {
   background-color: var(--background);
-  color: var(--foreground);
-  font-family: Inter;
+  color: var(--secondary);
+  font-family: "Inter", sans-serif;
 }
-
+main {
+  padding: 1rem;
+  font-size: clamp(0.5rem, 2vw, 2rem);
+  letter-spacing: 0.4px;
+  height: 100%;
+}
 .minimal {
   display: flex;
   flex-direction: row;
+  position: relative;
   justify-content: space-between;
   padding: 1rem;
 }
 
 .hero-section {
-  background: var(--gradient);
-  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
   justify-content: space-around;
-  padding: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-right: 4rem;
+  background-color: var(--section);
+  padding-left: 4rem;
+
   border-radius: 1rem;
+  transition: box-shadow 0.5s ease-out;
+}
+#hero-image {
+  display: flex;
+  grid-row-start: -3;
+  grid-row-end: -1;
+}
+.hero-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.hero-section:hover {
+  transition: translate 0.5s, box-shadow 0.5s;
+  box-shadow: -5px 5px 5px var(--secondary);
+  translate: 4px -4px;
+}
+.fa-square-github {
+  color: var(--foreground);
+}
+.hero-name {
+  margin-top: 0;
+  align-items: center;
+}
+.interests {
+  display: flex;
+  flex-direction: column;
 }
 img {
-  width: 30%;
-  height: 30%;
   aspect-ratio: 1/1;
   border-radius: 10%;
+  width: clamp(100px, 25vw, 250px);
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    padding: 1rem;
+  }
 }
